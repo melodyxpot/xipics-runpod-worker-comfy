@@ -297,7 +297,8 @@ def process_output_images(outputs, job_id):
                 try:
                     response = requests.post(
                         "https://cdn.xipics.com/api/upload/base64",
-                        json={"img": base64_image}
+                        json={"img": base64_image},
+                        headers={"Content-Type": "application/json"}
                     )
                     if response.status_code == 201:
                         cdn_url = response.json().get("fullPath")  # Using fullPath from the CDN response
